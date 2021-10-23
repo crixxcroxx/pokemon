@@ -10,8 +10,7 @@ Clone or download as zip, extract then serve or run on live server
 Use the keys: *W, A, S, D* to move the character up, left, down and right respectively
 
 
-*NOTE: This isn't a full game. I only included roaming around the map \
-and battling encountered pokemon.*
+*NOTE: This isn't a full game. I only included roaming around the map and battling encountered pokemon.*
 
 
 ### Assets src 
