@@ -15,12 +15,12 @@ and battling encountered pokemon.*
 
 
 ### Assets src 
-Main tileset \
- - https://pipoya.itch.io/pipoya-rpg-tileset-32x32 \
-Character sprite \
- - https://pipoya.itch.io/pipoya-free-rpg-character-sprites-32x32) \
-Prof Oak \
- - https://www.planetminecraft.com/skin/prof-oak/ \
-Additional sprites \
- - https://www.deviantart.com/chaoticcherrycake/journal/Credits-for-Tiles-367931482
- - https://pixelation.org/index.php?action=profile;u=44681;area=showposts;start=10
+- Main tileset 
+  - https://pipoya.itch.io/pipoya-rpg-tileset-32x32 
+- Character sprite 
+  - https://pipoya.itch.io/pipoya-free-rpg-character-sprites-32x32) 
+- Prof Oak 
+  - https://www.planetminecraft.com/skin/prof-oak/ 
+- Additional sprites 
+  - https://www.deviantart.com/chaoticcherrycake/journal/Credits-for-Tiles-367931482
+  - https://pixelation.org/index.php?action=profile;u=44681;area=showposts;start=10
