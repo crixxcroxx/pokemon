@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="#" />
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/pixelated" type="text/css" />
+</head>
+
+<body>
+	<div class="container">
+    <div class="screen-overlay loader">
+      <p>Loading</p>
+    </div>
+
+		<canvas id="canvas"></canvas>
+	</div>
+
+	<script src="js/index.js" type="module"></script>
+	<script>
+    /* on pokemon selection form */
+    //changes the pokemon image based on selection
+    function changeImg(el) {
+      let element = document.querySelector(`#prev-img`)
+      let url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`
+
+      if(el.value == 1) {
+        element.setAttribute(`src`,`${url}1.png`)
+      } else if(el.value == 4) {
+        element.setAttribute(`src`, `${url}4.png`)
+      } else if(el.value == 7) {
+        element.setAttribute(`src`, `${url}7.png`)
+      }
+    }
+	</script>
+</body>
+
+</html>
+

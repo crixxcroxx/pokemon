@@ -1,0 +1,44 @@
+{
+  "fadeIn": [
+    {"opacity": 0},
+    {"opacity": 1}
+  ],
+  "fadeOut": [
+    {"opacity": 1},
+    {"opacity": 0}
+  ],
+  "scaleUp": [
+    {"transform": "scale(0)"},
+    {"transform": "scale(1)"}
+  ],
+  "scaleDown": [
+    {"transform": "scale(1)"},
+    {"transform": "scale(0)"}
+  ],
+  "moveLeft": [
+    {"transform": "translateX(0)"},
+    {"transform": "translateX(-10rem)"}
+  ],
+  "moveRight": [
+    {"transform": "translateX(0)"},
+    {"transform": "translateX(10rem)"}
+  ],
+  "moveDown": [
+    {"transform": "translateY(0)"},
+    {"transform": "translateY(10rem)"}
+  ],
+  "moveUp": [
+    {"transform": "translateY(0)"},
+    {"transform": "translateY(-10rem)"}
+  ],
+  "pAttk": [
+    {"transform": "translateX(0)"},
+    {"transform": "translateX(1rem)"},
+    {"transform": "translateX(0)"}
+  ],
+  "eAttk": [
+    {"transform": "translateX(0)"},
+    {"transform": "translateX(-1rem)"},
+    {"transform": "translateX(0)"}
+  ]
+}
