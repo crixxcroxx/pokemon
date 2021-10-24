@@ -3,14 +3,11 @@ A Gameboy Pokemon game clone using Vanilla JS, CSS and HTML with [PokeAPI](https
 
 
 ### Instruction 
-Clone or download as zip, extract then serve or run on live server
-
+Clone or download as zip, extract then serve or run on live server. \
+You could also try it [here](https://crixxcroxx.github.io/pokemon/)
 
 ### Controls 
 Use the keys: *W, A, S, D* to move the character up, left, down and right respectively
-
-
-*NOTE: This isn't a full game. I only included roaming around the map and battling encountered pokemon.*
 
 
 ### Assets src 
@@ -23,3 +20,6 @@ Use the keys: *W, A, S, D* to move the character up, left, down and right respec
 - Additional sprites 
   - https://www.deviantart.com/chaoticcherrycake/journal/Credits-for-Tiles-367931482
   - https://pixelation.org/index.php?action=profile;u=44681;area=showposts;start=10
+
+
+*NOTE: This isn't a full game. I only included roaming around the map and fighting encountered pokemon.*
