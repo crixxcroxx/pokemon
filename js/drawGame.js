@@ -6,8 +6,8 @@ import { states } from "./states.js";
 let data = {}
 let f = (async function () {
   const [wm, wf] = await Promise.all([
-    fetch('../data/world-map.json'),
-    fetch('../data/map-frames.json')
+    fetch('data/world-map.json'),
+    fetch('data/map-frames.json')
   ]);
 
   data.WORLD_MAP = await wm.json()
