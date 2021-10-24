@@ -21,8 +21,8 @@ async function fetchData() {
 //fetch keyframes.json and message.json
 async function fJson() {
   const [kfRes, mRes] = await Promise.all([
-    fetch('../data/keyframes.json'),
-    fetch('../data/message.json')
+    fetch('data/keyframes.json'),
+    fetch('data/message.json')
   ]);
 
   jsonData.keyframes = await kfRes.json()
