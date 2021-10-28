@@ -120,13 +120,6 @@ export const states = {
         utils.$(`.next`).disabled = true
 
         import(`./character.js`).then(({Character}) => {
-          //fade out welcome_screen and remove from DOM
-          utils.delay(500).then(() => {
-            utils.animateElement(utils.$(`.welcome`), data.KEYFRAMES.fadeOut, 1500).then(() => {
-              utils.$(`.container`).removeChild(utils.$(`.welcome`))
-            })
-          })
-
           //create new character
           player = new Character(
             {
@@ -139,7 +132,14 @@ export const states = {
           import(`./drawGame.js`).then(({setCharSprite, drawGame}) => {
             //set character sprite depending on gender
             setCharSprite(player.gender)
-
+            
+            //fade out welcome_screen and remove from DOM
+            utils.delay(500).then(() => {
+              utils.animateElement(utils.$(`.welcome`), data.KEYFRAMES.fadeOut, 1000).then(() => {
+                utils.$(`.container`).removeChild(utils.$(`.welcome`))
+              })
+            })
+            
             //draw world
             setInterval(() => {
               drawGame(player, p_data)
