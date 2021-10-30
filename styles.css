@@ -324,7 +324,7 @@ form {
   gap: 0.7rem;
 
   width: 555.5px;
-  margin: 0 auto 4px auto;
+  margin: 0 auto 4px -1px;
   padding: 16px 32px;
   color: var(--clr-primary);
   background-color: var(--clr-primary);
