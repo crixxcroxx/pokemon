@@ -74,25 +74,16 @@ export const drawGame = (player, pokeDB) => {
 				&& player.tileTo.y > 0
 			) {
 				player.tileTo.y -= 1
-			
+
 				//bush collision
 				if(data.WORLD_MAP.bush[utils.getIndex(player.tileFrom.x, player.tileFrom.y)] != 0) {
 					//pokemon encounter
-					let chance_enc = Math.floor(Math.random() * 5)
-          if(chance_enc == 1) {
-            let idx = Math.floor(Math.random() * pokeDB.length)
-            if(idx == player.pokemon.id) idx += 1
-            let enemy = pokeDB[idx]
-            let e_lvl = Math.floor((Math.random() * 5) + 1)
-            enemy.level = e_lvl
-
-						states.encounter(enemy)
-          }
+          enemyEncounter(player.pokemon.id, pokeDB)
 				}
 			}
 			if(player.frame.y != 3) player.frame.y = player.moveDirection.up
 		}
-		else if(key[83] && player.isMoving == false) { 
+		else if(key[83] && player.isMoving == false) {
 			if(
 				data.WORLD_MAP.collision[utils.getIndex(player.tileFrom.x, player.tileFrom.y) + MAP_WIDTH] == 0
 				&& player.tileTo.y < MAP_HEIGHT - 1
@@ -102,21 +93,12 @@ export const drawGame = (player, pokeDB) => {
 				//bush collision
 				if(data.WORLD_MAP.bush[utils.getIndex(player.tileFrom.x, player.tileFrom.y)] != 0) {
           //pokemon encounter
-					let chance_enc = Math.floor(Math.random() * 5)
-          if(chance_enc == 1) {
-            let idx = Math.floor(Math.random() * pokeDB.length)
-            if(idx == player.pokemon.id) idx += 1
-            let enemy = pokeDB[idx]
-            let e_lvl = Math.floor((Math.random() * 5) + 1)
-            enemy.level = e_lvl
-
-						states.encounter(enemy)
-          }
+          enemyEncounter(player.pokemon.id, pokeDB)
 				}
 			}
 			if(player.frame.y != 0) player.frame.y = player.moveDirection.down
 		}
-		else if(key[65] && player.isMoving == false) { 
+		else if(key[65] && player.isMoving == false) {
 			if(
 				data.WORLD_MAP.collision[utils.getIndex(player.tileFrom.x, player.tileFrom.y) - 1] == 0
 				&& player.tileTo.x > 0
@@ -126,21 +108,12 @@ export const drawGame = (player, pokeDB) => {
 				//bush collision
 				if(data.WORLD_MAP.bush[utils.getIndex(player.tileFrom.x, player.tileFrom.y)] != 0) {
 					//pokemon encounter
-					let chance_enc = Math.floor(Math.random() * 5)
-          if(chance_enc == 1) {
-            let idx = Math.floor(Math.random() * pokeDB.length)
-            if(idx == player.pokemon.id) idx += 1
-            let enemy = pokeDB[idx]
-            let e_lvl = Math.floor((Math.random() * 5) + 1)
-            enemy.level = e_lvl
-
-						states.encounter(enemy)
-          }
+          enemyEncounter(player.pokemon.id, pokeDB)
 				}
 			}
 			if(player.frame.y != 1) player.frame.y = player.moveDirection.right
 		}
-		else if(key[68] && player.isMoving == false) { 
+		else if(key[68] && player.isMoving == false) {
 			if(
 				data.WORLD_MAP.collision[utils.getIndex(player.tileFrom.x, player.tileFrom.y) + 1] == 0
 				&& player.tileTo.x <  MAP_WIDTH - 1
@@ -150,24 +123,15 @@ export const drawGame = (player, pokeDB) => {
 				//bush collision
 				if(data.WORLD_MAP.bush[utils.getIndex(player.tileFrom.x, player.tileFrom.y)] != 0) {
 					//pokemon encounter
-					let chance_enc = Math.floor(Math.random() * 5)
-          if(chance_enc == 1) {
-            let idx = Math.floor(Math.random() * pokeDB.length)
-            if(idx == player.pokemon.id) idx += 1
-            let enemy = pokeDB[idx]
-            let e_lvl = Math.floor((Math.random() * 5) + 1)
-            enemy.level = e_lvl
-
-						states.encounter(enemy)
-          }
+          enemyEncounter(player.pokemon.id, pokeDB)
 				}
 			}
 			if(player.frame.y != 2) player.frame.y = player.moveDirection.left
 		}
 	}//!end processMovement()
-	
+
 	//draw sprites
-	//z is for layering of sprites on canvas 
+	//z is for layering of sprites on canvas
 	//z == 0 appears at the very bottom
 	for (let z = 0; z < 6; z++) {
 		//x and y are coordinates x and y and are used for plotting
@@ -284,7 +248,7 @@ const drawImg = (imgSrc, pos, fr) => {
 		x: frame.x * TILE_WIDTH,
 		y: frame.y * TILE_HEIGHT
 	}
-	
+
 	//canvas method to draw image
 	//for more info about ctx.drawImage() refer to
 	//https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage
@@ -301,3 +265,19 @@ const drawImg = (imgSrc, pos, fr) => {
 	);
 }
 
+//call for state.encounter when enemy is encountered
+const enemyEncounter = (id, pokeDB) => {
+  let chance_enc = Math.floor(Math.random() * 5)
+
+  if(chance_enc == 1) {
+    let idx = Math.floor(Math.random() * pokeDB.length)
+
+    if(idx == id) idx += 1
+
+    let enemy = pokeDB[idx]
+    let e_lvl = Math.floor((Math.random() * 5) + 1)
+
+    enemy.level = e_lvl
+    states.encounter(enemy)
+  }
+}
