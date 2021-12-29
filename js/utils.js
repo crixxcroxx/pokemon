@@ -1,6 +1,6 @@
 const MAP_WIDTH = 18
 
-export const utils = {
+const utils = {
   $: name => {
     return document.querySelector(name)
   },
@@ -27,8 +27,8 @@ export const utils = {
       keyframes,
       {
         duration: duration,
-        easing: 'linear',
-        fill: 'forwards'
+        easing: "linear",
+        fill: "forwards"
       }
     )
 
@@ -36,3 +36,5 @@ export const utils = {
     return anim.finished
   }
 }
+
+export default utils

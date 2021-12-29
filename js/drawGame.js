@@ -1,5 +1,5 @@
-import { utils } from "./utils.js";
-import { states } from "./states.js";
+import utils from "./utils.js";
+import states from "./states.js";
 
 //fetch world-map.json for canvas postion of sprites
 //and map-frames.json for image frames
@@ -14,31 +14,31 @@ let f = (async function () {
   data.MAP_FRAMES = await wf.json()
 })()
 
-const canvas = utils.$(`#canvas`)
-const ctx = canvas.getContext(`2d`)
+const canvas = utils.$("#canvas")
+const ctx = canvas.getContext("2d")
 canvas.width = 576
 canvas.height = 448
 
 const image = {}
 image.mainTileset = new Image()
-image.mainTileset.src = `img/main-tileset.png`
+image.mainTileset.src = "img/main-tileset.png"
 image.waterTileset = new Image()
-image.waterTileset.src = `img/water-tileset.png`
+image.waterTileset.src = "img/water-tileset.png"
 image.grassTileset = new Image()
-image.grassTileset.src = `img/grass-tileset.png`
+image.grassTileset.src = "img/grass-tileset.png"
 image.pokeTileset = new Image()
-image.pokeTileset.src = `img/chaoticcherrycake.png`
+image.pokeTileset.src = "img/chaoticcherrycake.png"
 image.bushSprite = new Image()
-image.bushSprite.src = `img/bush.png`
+image.bushSprite.src = "img/bush.png"
 image.charSprite = new Image()
-image.charSprite.src = ``
+image.charSprite.src = ""
 
 //set image according to gender
 export const setCharSprite = gender => {
-	if(gender == `Male`) {
-		return image.charSprite.src = `img/c_male1.png`
-	} else if (gender == `Female`) {
-		return image.charSprite.src = `img/c_female1.png`
+	if(gender == "Male") {
+		return image.charSprite.src = "img/c_male1.png"
+	} else if (gender == "Female") {
+		return image.charSprite.src = "img/c_female1.png"
 	}
 }
 
@@ -78,7 +78,7 @@ export const drawGame = (player, pokeDB) => {
 				//bush collision
 				if(data.WORLD_MAP.bush[utils.getIndex(player.tileFrom.x, player.tileFrom.y)] != 0) {
 					//pokemon encounter
-          enemyEncounter(player.pokemon.id, pokeDB)
+          enemyEncounter(player, pokeDB)
 				}
 			}
 			if(player.frame.y != 3) player.frame.y = player.moveDirection.up
@@ -93,7 +93,7 @@ export const drawGame = (player, pokeDB) => {
 				//bush collision
 				if(data.WORLD_MAP.bush[utils.getIndex(player.tileFrom.x, player.tileFrom.y)] != 0) {
           //pokemon encounter
-          enemyEncounter(player.pokemon.id, pokeDB)
+          enemyEncounter(player, pokeDB)
 				}
 			}
 			if(player.frame.y != 0) player.frame.y = player.moveDirection.down
@@ -108,7 +108,7 @@ export const drawGame = (player, pokeDB) => {
 				//bush collision
 				if(data.WORLD_MAP.bush[utils.getIndex(player.tileFrom.x, player.tileFrom.y)] != 0) {
 					//pokemon encounter
-          enemyEncounter(player.pokemon.id, pokeDB)
+          enemyEncounter(player, pokeDB)
 				}
 			}
 			if(player.frame.y != 1) player.frame.y = player.moveDirection.right
@@ -123,7 +123,7 @@ export const drawGame = (player, pokeDB) => {
 				//bush collision
 				if(data.WORLD_MAP.bush[utils.getIndex(player.tileFrom.x, player.tileFrom.y)] != 0) {
 					//pokemon encounter
-          enemyEncounter(player.pokemon.id, pokeDB)
+          enemyEncounter(player, pokeDB)
 				}
 			}
 			if(player.frame.y != 2) player.frame.y = player.moveDirection.left
@@ -266,18 +266,18 @@ const drawImg = (imgSrc, pos, fr) => {
 }
 
 //call for state.encounter when enemy is encountered
-const enemyEncounter = (id, pokeDB) => {
+const enemyEncounter = (player, pokeDB) => {
   let chance_enc = Math.floor(Math.random() * 5)
 
   if(chance_enc == 1) {
     let idx = Math.floor(Math.random() * pokeDB.length)
 
-    if(idx == id) idx += 1
+    if(idx == player.pokemon.id) idx += 1
 
     let enemy = pokeDB[idx]
     let e_lvl = Math.floor((Math.random() * 5) + 1)
 
     enemy.level = e_lvl
-    states.encounter(enemy)
+    states.encounter(player, enemy)
   }
 }

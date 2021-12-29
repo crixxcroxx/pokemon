@@ -1,17 +1,17 @@
-import { utils } from "./utils.js"
+import utils from "./utils.js"
 
 //refer to https://bulbapedia.bulbagarden.net/wiki/Damage
 //for damage calculation
 
-export function attk(caster, target, types) {
+export default function attk(caster, target, types) {
   const { move, pokemon } = caster
 
   //checks if the attacker is the user or enemy
-  let hp_bar = ``
-  if(`customID` in pokemon) {
-    hp_bar = `#enemy-hp`
+  let hp_bar = ""
+  if("customID" in pokemon) {
+    hp_bar = "#enemy-hp"
   } else {
-    hp_bar = `#char-hp`
+    hp_bar = "#char-hp"
   }
 
   let attack = 0
@@ -20,10 +20,10 @@ export function attk(caster, target, types) {
 
   //physical attack will be reduced depending on target's physical defense
   //and special attack will be reduced depending on target's special defense
-  if (move.class == `physical`) {
+  if (move.class == "physical") {
     attack = pokemon.stats.attack
     defense = target.pokemon.stats.defense
-  } else if (move.class == `special`){
+  } else if (move.class == "special"){
     attack = pokemon.stats.special_attack
     defense = target.pokemon.stats.special_defense
   }
@@ -33,7 +33,7 @@ export function attk(caster, target, types) {
 
   //checks the damage type for effectiveness of the attack
   //before calculating the final damage
-  let dmg_type = ``
+  let dmg_type = ""
   target.pokemon.type.map(t => {
     let mov = types[move.type]
 
@@ -45,8 +45,8 @@ export function attk(caster, target, types) {
 
   //attack is super effective
   //damage is doubled
-  if(dmg_type == `double_damage_to`) {
-    const message = `It's super effective!`
+  if(dmg_type == "double_damage_to") {
+    const message = "It's super effective!"
     target.hp.current_hp -= (total_dmg * 2)
 
     battleEvent({
@@ -59,8 +59,8 @@ export function attk(caster, target, types) {
 
   //attack is not very effective
   //damage is halved
-  else if(dmg_type == `half_damage_to`) {
-    const message = `It's not very effective.`
+  else if(dmg_type == "half_damage_to") {
+    const message = "It's not very effective."
     target.hp.current_hp -= (total_dmg / 2)
 
     battleEvent({
@@ -72,8 +72,8 @@ export function attk(caster, target, types) {
   }
 
   //attack has no damage
-  else if (dmg_type == `no_damage_to`) {
-    const message = `Dealt no damage.`
+  else if (dmg_type == "no_damage_to") {
+    const message = "Dealt no damage."
     target.hp.current_hp -= 0
 
     battleEvent({
@@ -103,14 +103,14 @@ const battleEvent = (hp, hp_bar, message) => {
   const {current_hp, max_hp} = hp
 
   if(current_hp <= 0) {
-    utils.$(`${hp_bar}`).style.width = 0
+    utils.$(hp_bar).style.width = 0
   } else {
-    utils.$(`${hp_bar}`).style.width = `${100 / (max_hp / current_hp)}%`
+    utils.$(hp_bar).style.width = `${100 / (max_hp / current_hp)}%`
   }
 
   if(message) {
     utils.delay(1000).then(() => {
-      utils.$(`#message`).innerText = message
+      utils.$("#message").innerText = message
     })
   }
 }

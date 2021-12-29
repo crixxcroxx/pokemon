@@ -24,15 +24,15 @@
     /* on pokemon selection form */
     //changes the pokemon image based on selection
     function changeImg(el) {
-      let element = document.querySelector(`#prev-img`)
-      let url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/`
+      let element = document.querySelector("#prev-img")
+      let url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon"
 
       if(el.value == 1) {
-        element.setAttribute(`src`,`${url}1.png`)
+        element.setAttribute("src",`${url}/1.png`)
       } else if(el.value == 4) {
-        element.setAttribute(`src`, `${url}4.png`)
+        element.setAttribute("src", `${url}/4.png`)
       } else if(el.value == 7) {
-        element.setAttribute(`src`, `${url}7.png`)
+        element.setAttribute("src", `${url}/7.png`)
       }
     }
 	</script>
